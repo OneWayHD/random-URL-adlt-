@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>ランダム遷移</title>
+  <!-- 検索結果に出したくない場合はnoindex推奨 -->
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    // ①ここを書き換え：遷移先URLを実URLに差し替え
+    const DESTINATIONS = [
+      "https://www.yahoo.co.jp/",
+      "https://www.google.com/?hl=ja",
+      "https://www.tokyo-marriott.com/",
+      "https://tabelog.com/yakitori/chiba/A1201/rank/",
+      "https://www.amazon.co.jp/b?ie=UTF8&node=3964662051"
+    ];
+
+    // ②等確率で1つ選んで即リダイレクト
+    function redirectRandomly() {
+      const i = Math.floor(Math.random() * DESTINATIONS.length);
+      const url = DESTINATIONS[i];
+      // 戻るボタンでこの中間ページに戻らないよう、replaceを推奨
+      location.replace(url);
+    }
+
+    // ページが読み込まれたら即実行
+    document.addEventListener("DOMContentLoaded", redirectRandomly);
+  </script>
+  <noscript>
+    <!-- JavaScript無効の人向けのフォールバック（任意） -->
+    このページは自動転送します。JavaScriptを有効にしてください。
+  </noscript>
+</head>
+<body>
+  <p>転送中です…</p>
+</body>
+</html>
